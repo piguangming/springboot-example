@@ -10,8 +10,6 @@ import javax.jms.Queue;
 public class MQ {
 	@Bean
 	public Queue queue() {
-		String topic = "sample.queue";
-		System.out.println(Thread.currentThread().getName() + " 创建MQ主题：" + topic);
-		return new ActiveMQQueue(topic);
+		return new ActiveMQQueue("sample.queue");
 	}
 }

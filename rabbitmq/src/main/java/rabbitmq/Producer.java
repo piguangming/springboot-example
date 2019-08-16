@@ -1,4 +1,5 @@
-package activemq;/*
+package rabbitmq;
+/*
  * Copyright 2012-2015 the original author or authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,15 +15,25 @@ package activemq;/*
  * limitations under the License.
  */
 
-import org.springframework.jms.annotation.JmsListener;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
+import java.util.Date;
+
 @Component
-public class Consumer {
+public class Producer {
 
-	@JmsListener(destination = "sample.queue")
-	public void subscribe(String msg) {
-		System.out.println(Thread.currentThread().getName() + " 订阅消息：" + msg);
+	@Autowired
+	private RabbitTemplate rabbitTemplate;
+
+	int count = 1;
+
+	@Scheduled(fixedRate = 1000 )
+	void pub() {
+		String msg = count++ + "";
+		System.out.println(Thread.currentThread().getName() + "线程发布消息："  + msg + " " + new Date());
+		rabbitTemplate.convertAndSend("queue", msg);
 	}
-
 }

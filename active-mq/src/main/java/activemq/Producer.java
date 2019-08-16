@@ -16,21 +16,28 @@ package activemq;/*
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsMessagingTemplate;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+import sun.management.counter.Counter;
 
 import javax.jms.Queue;
+import java.util.Date;
 
 @Component
 public class Producer {
 
 	@Autowired
-	private JmsMessagingTemplate jmsMessagingTemplate;
+	private JmsMessagingTemplate jmsMessagingTemplate;;
 
 	@Autowired
 	private Queue queue;
 
-	void publish(String msg) {
-		System.out.println(Thread.currentThread().getName() + " 发布消息"  + msg );
+	int count = 1;
+
+	@Scheduled(fixedRate = 1000 )
+	void pub() {
+		String msg = count++ + "";
+		System.out.println(Thread.currentThread().getName() + "线程发布消息："  + msg + " " + new Date());
 		jmsMessagingTemplate.convertAndSend(queue, msg);
 	}
 }

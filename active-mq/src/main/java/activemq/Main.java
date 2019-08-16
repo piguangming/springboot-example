@@ -14,25 +14,16 @@ package activemq;/*
  * limitations under the License.
  */
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableJms
-public class SampleActiveMQApplication implements CommandLineRunner {
-
-	@Autowired
-	Producer producer;
-
+@EnableScheduling
+public class Main {
 	public static void main(String[] args) {
-		SpringApplication.run(SampleActiveMQApplication.class, args);
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		producer.publish("Test message" + System.currentTimeMillis());
+		SpringApplication.run(Main.class, args);
 	}
 }
