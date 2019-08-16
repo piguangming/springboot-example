@@ -16,6 +16,8 @@
     <modules>
         <module>rabbitmq</module>
         <module>active-mq</module>
+        <module>redis</module>
+        <module>mongodb</module>
     </modules>
 
 </project>
