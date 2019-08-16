@@ -18,6 +18,7 @@
         <module>active-mq</module>
         <module>redis</module>
         <module>mongodb</module>
+        <module>upload-large-files</module>
     </modules>
 
 </project>
