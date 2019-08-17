@@ -23,7 +23,7 @@ public class UploadController {
     public String upload(@RequestParam("file") MultipartFile file) throws Exception {
         Path path = Paths.get("C://temp//" + file.getOriginalFilename());
         Files.write(path, file.getBytes());
-        return "upload success";
+        return "upload success, file path=" + path;
     }
 
 
