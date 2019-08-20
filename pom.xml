@@ -19,6 +19,11 @@
         <module>redis</module>
         <module>mongodb</module>
         <module>upload-large-files</module>
+        <module>cache</module>
+        <module>mail</module>
+        <module>jpa</module>
+        <module>shiro</module>
+        <module>eureka</module>
     </modules>
 
 </project>
