@@ -24,6 +24,7 @@
         <module>jpa</module>
         <module>shiro</module>
         <module>eureka</module>
+        <module>feign</module>
     </modules>
 
 </project>
